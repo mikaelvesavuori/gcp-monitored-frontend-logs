@@ -85,9 +85,9 @@ Run `sh scripts/teardown.sh`. This will tear the whole project down, and does as
 ```
 POST 0.0.0.0:8080 or Cloud Run endpoint
 {
-	"severity": "error",
-	"message": "Something caused an error to be thrown!",
-	"error": "{\"stack\":\"Error: Something caused an error to be thrown!\n    at log (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:32:25)\n    at HTMLButtonElement.<anonymous> (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:38:80)\",\"message\":\"Something caused an error to be thrown!\"}"
+  "severity": "error",
+  "message": "Something caused an error to be thrown!",
+  "error": "{\"stack\":\"Error: Something caused an error to be thrown!\n    at log (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:32:25)\n    at HTMLButtonElement.<anonymous> (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:38:80)\",\"message\":\"Something caused an error to be thrown!\"}"
 }
 ```
 
@@ -96,9 +96,9 @@ POST 0.0.0.0:8080 or Cloud Run endpoint
 ```
 POST 0.0.0.0:8080 or Cloud Run endpoint
 {
-	"severity": "warn",
-	"message": "Whoops, this was awkward. Time for a warning :(",
-	"error": "{\"stack\":\"Error: Whoops, this was awkward. Time for a warning :(\n    at log (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:32:25)\n    at HTMLButtonElement.<anonymous> (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:39:79)\",\"message\":\"Whoops, this was awkward. Time for a warning :(\"}"
+  "severity": "warn",
+  "message": "Whoops, this was awkward. Time for a warning :(",
+  "error": "{\"stack\":\"Error: Whoops, this was awkward. Time for a warning :(\n    at log (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:32:25)\n    at HTMLButtonElement.<anonymous> (file:///Users/YOUR_NAME/web/gcp-frontend-logs/app/index.html:39:79)\",\"message\":\"Whoops, this was awkward. Time for a warning :(\"}"
 }
 ```
 
