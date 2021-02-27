@@ -1,0 +1,18 @@
+{
+  "name": "gcp-frontend-logs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo No tests...",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Mikael Vesavuori",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/error-reporting": "^2.0.1",
+    "fastify": "^3.12.0",
+    "fastify-cors": "^5.2.0"
+  }
+}

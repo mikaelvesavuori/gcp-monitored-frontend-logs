@@ -1,0 +1,71 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: Identity
+    entrypoint: 'bash'
+    args:
+    - '-eEuo'
+    - 'pipefail'
+    - '-c'
+    - |-
+      echo "Build ID: $BUILD_ID"
+      echo "Revision ID: $REVISION_ID"
+      echo "Commit SHA: $COMMIT_SHA"
+      echo "Short SHA: $SHORT_SHA"
+      echo "Repo name: $REPO_NAME"
+      echo "Branch name: $BRANCH_NAME"
+      echo "Tag name: $TAG_NAME"
+
+  - name: 'node'
+    id: Install
+    entrypoint: 'npm'
+    args:
+      - 'install'
+    dir: 'src'
+
+  - name: 'node'
+    id: Test
+    entrypoint: 'npm'
+    args:
+      - 'test'
+    dir: 'src'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: Deploy
+    entrypoint: gcloud
+    args:
+      [
+        'beta',
+        'run',
+        'deploy',
+        '$_SERVICE_NAME',
+        '--region=$_REGION',
+        '--platform=managed',
+        '--memory=2Gi',
+        '--source',
+        '.',
+        '--tag=latest',
+        '--no-use-http2',
+        '--max-instances=5',
+        '--allow-unauthenticated',
+        '--service-account=$_SERVICE_ACCOUNT_NAME'
+      ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: DirectTraffic
+    entrypoint: gcloud
+    args:
+      [
+        'beta',
+        'run',
+        'services',
+        'update-traffic',
+        '$_SERVICE_NAME',
+        '--region=$_REGION',
+        '--platform=managed',
+        '--to-latest'
+      ]
+
+substitutions:
+  _REGION: 'europe-north1'
+  _SERVICE_NAME: 'log-collector'
+  _SERVICE_ACCOUNT_NAME: 'log-collector-sa'

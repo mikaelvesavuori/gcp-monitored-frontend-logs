@@ -1,0 +1,19 @@
+{
+  "name": "gcp-monitored-frontend-logs",
+  "version": "1.0.0",
+  "description": "Demonstrates sending front-end errors to GCP monitoring tools.",
+  "main": "index.js",
+  "author": "Mikael Vesavuori",
+  "scripts": {
+    "test": "echo No tests...",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  }
+}
