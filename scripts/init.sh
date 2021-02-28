@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # EDIT THESE TO YOUR VALUES
-export PROJECT_ID="frontend-logs-1234"
+export PROJECT_ID=""
 export BILLING_ID="" # Get it at: https://console.cloud.google.com/billing (or in step below)
 export LOCATION="europe-north1"
 
@@ -24,7 +24,7 @@ gcloud config set project $PROJECT_ID
 
 # Get project number
 gcloud projects list
-export PROJECT_NUMBER="36683999742" # From above
+export PROJECT_NUMBER="" # From above
 
 # Enable billing
 gcloud services enable cloudbilling.googleapis.com

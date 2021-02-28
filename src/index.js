@@ -6,7 +6,7 @@ const { Logger } = require('./frameworks/Logger');
 
 // Vars; EDIT THESE TO YOUR VALUES
 const PORT = process.env.PORT || 8080;
-const PROJECT_ID = process.env.PROJECT_ID || 'my-project';
+const PROJECT_ID = process.env.PROJECT_ID || 'frontend-logs-1234';
 const LOGGING_COMPONENT = process.env.LOGGING_COMPONENT || 'errors-my-project'; // Your "category" or "container" for the logs
 
 // Local use
@@ -15,7 +15,7 @@ const LOGGING_COMPONENT = process.env.LOGGING_COMPONENT || 'errors-my-project'; 
 // Set up GCP Error Reporting
 const config = {
   projectId: PROJECT_ID,
-  reportMode: 'production' // Use 'always' for shipping logs while in development
+  reportMode: 'always' // Use 'always' for shipping logs while in development
   // Local use
   //credentials: require(KEYFILE_PATH)
 };
@@ -33,6 +33,7 @@ fastify.register(fastifyCors, {});
 fastify.post('/', async (req, res) => {
   const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
   const { message, severity, error } = body;
+  console.log(body);
   if (!message || !severity)
     return res.code(500).send(JSON.stringify('Missing message or severity!'));
 
@@ -42,8 +43,7 @@ fastify.post('/', async (req, res) => {
       req.headers['x-cloud-trace-context'] || req.headers['X-Cloud-Trace-Context'];
 
     // Clean stack trace from newlines
-    let stackTrace = error ? error.replace(/\n/g, '') : {};
-    stackTrace = JSON.parse(stackTrace);
+    let stackTrace = error ? error.replace(/\n/g, '') : null;
 
     // Create a structured log
     logger.log(
