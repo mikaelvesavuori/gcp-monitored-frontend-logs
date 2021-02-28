@@ -24,7 +24,7 @@ gcloud config set project $PROJECT_ID
 
 # Get project number
 gcloud projects list
-export PROJECT_NUMBER="36683999742" # From above
+export PROJECT_NUMBER="" # From above
 
 # Enable billing
 gcloud services enable cloudbilling.googleapis.com
