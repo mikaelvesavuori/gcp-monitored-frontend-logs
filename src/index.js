@@ -33,7 +33,6 @@ fastify.register(fastifyCors, {});
 fastify.post('/', async (req, res) => {
   const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
   const { message, severity, error } = body;
-  console.log(body);
   if (!message || !severity)
     return res.code(500).send(JSON.stringify('Missing message or severity!'));
 
